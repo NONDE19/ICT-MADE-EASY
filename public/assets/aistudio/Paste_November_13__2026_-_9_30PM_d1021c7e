@@ -1,0 +1,1055 @@
+# MASTER PROMPT: DESIGN AND DEVELOP VIRTUOLAB FROM SCRATCH USING POWERSHELL
+
+## 1. Your role
+
+Act as a senior full-stack software engineer, software architect, UI/UX designer, database engineer, educational technology specialist and quality assurance engineer.
+
+Your responsibility is to design, develop, configure, test and deliver a complete, functional web-based educational system called **VIRTUOLAB — Virtual ICT Learning and Computer Simulation System**.
+
+You must build the entire system from scratch using PowerShell scripts as the primary means of project creation, configuration and execution.
+
+Do not simply generate a project proposal, UI mockup, static website or demonstration. Build an operational application with a functional frontend, backend, database, authentication, interactive simulations, assessments and dashboards.
+
+Work systematically and verify each development stage before proceeding.
+
+---
+
+## 2. Project identity and purpose
+
+**System name:** VIRTUOLAB
+
+**Full name:** Virtual ICT Learning and Computer Simulation System.
+
+**Project title:**
+
+Design and Development of a Web-Based Virtual ICT Learning and Computer Simulation System to Enhance Practical Computer Skills in Schools with Limited ICT Infrastructure in Zambia.
+
+### Problem being addressed
+
+Many schools in Zambia have limited access to computer laboratories, computers and other ICT learning equipment. Consequently, pupils may learn computer studies theoretically without sufficient opportunities to practise using computers and understand how computer systems operate.
+
+This creates a gap between theoretical ICT knowledge and practical computer skills.
+
+VIRTUOLAB should help address this challenge by providing an interactive virtual environment where pupils can learn computing concepts, explore computer hardware, understand operating systems and practise essential computer operations through browser-based simulations.
+
+### Main objective
+
+To design and develop an interactive web-based virtual ICT learning and computer simulation system that provides pupils with opportunities to acquire and practise fundamental computer skills in schools with limited ICT infrastructure.
+
+### Important system principle
+
+VIRTUOLAB is an educational simulation platform. It must not pretend to be a real Windows operating system or claim to replace actual computer hardware.
+
+It should recreate selected computer operations in a realistic, interactive browser-based environment.
+
+---
+
+## 3. Development requirements
+
+Develop the application entirely from scratch.
+
+Use the following technology stack unless a genuine technical limitation requires a justified change.
+
+### Frontend
+- React.
+- TypeScript.
+- Vite.
+- HTML5.
+- CSS3.
+- Responsive design.
+- Lucide icons or another suitable open-source icon library.
+
+### Backend
+- Node.js.
+- Express.js.
+- TypeScript.
+- REST API architecture.
+
+### Database
+- SQLite for the initial local installation.
+- Prisma ORM for database management and migrations.
+- Seed scripts for initial administrator and demonstration data.
+
+### Authentication and security
+- Secure password hashing using bcrypt.
+- Session-based authentication or secure JWT authentication with an appropriate refresh strategy.
+- Role-based access control.
+- Input validation.
+- Protected API endpoints.
+- Secure environment variables.
+- Appropriate CORS configuration.
+- Protection against common web vulnerabilities.
+
+### Testing
+- Vitest for frontend and backend unit tests where appropriate.
+- React Testing Library for interface tests.
+- Supertest for API tests.
+- Playwright for end-to-end browser testing.
+
+### Development environment
+- Windows 10/11.
+- Windows PowerShell 5.1 compatible scripts where possible.
+- Node.js and npm.
+- Visual Studio Code recommended.
+
+Avoid unnecessary paid services, proprietary dependencies and subscriptions.
+
+---
+
+## 4. PowerShell-first development requirement
+
+PowerShell must be the primary development automation tool.
+
+Do not simply provide instructions telling me to manually create dozens of files.
+
+Create PowerShell scripts that automatically generate the project folders, files, configurations and required source code.
+
+The project should have scripts such as:
+
+1. `setup.ps1` — checks prerequisites and initializes the project.
+2. `create-project.ps1` — creates the complete directory structure and source files.
+3. `install-dependencies.ps1` — installs required packages.
+4. `configure-database.ps1` — configures and initializes the database.
+5. `seed-database.ps1` — creates initial roles and demonstration data.
+6. `start-development.ps1` — starts the frontend and backend.
+7. `stop-development.ps1` — stops the development processes safely.
+8. `run-tests.ps1` — runs automated tests.
+9. `build-production.ps1` — generates production builds.
+10. `backup-database.ps1` — creates a database backup.
+11. `reset-database.ps1` — resets demonstration data safely, with confirmation.
+
+You may create additional scripts when necessary.
+
+### PowerShell execution rules
+
+- Use `New-Item`, `Set-Content`, `Add-Content`, `Get-Content`, `Test-Path`, `Copy-Item`, `Move-Item` and other suitable PowerShell commands to create and manage project files.
+- Use here-strings for writing large source files.
+- Use UTF-8 encoding.
+- Ensure paths work correctly on Windows.
+- Quote paths containing spaces.
+- Avoid destructive commands unless explicitly required and confirmed.
+- Do not overwrite unrelated files.
+- Make scripts reusable and safe to run more than once where practical.
+- Provide clear success and error messages.
+- Check exit codes after installing dependencies, migrating the database, building and running tests.
+- Do not silently ignore failed commands.
+- Avoid creating one enormous PowerShell script that is difficult to maintain.
+- Keep application source code in appropriately separated files.
+
+All PowerShell scripts must be included in the final project.
+
+---
+
+## 5. Main system users and access levels
+
+Implement three primary user roles.
+
+### A. Administrator
+
+The administrator manages the entire platform.
+
+Required capabilities:
+
+- Secure administrator login.
+- Create, edit, deactivate and manage schools.
+- Register and manage teachers.
+- Register and manage pupils.
+- Assign teachers to schools and classes.
+- Create and manage classes.
+- Manage learning modules.
+- View platform statistics.
+- View pupil and teacher activity.
+- View assessment results.
+- Manage system settings.
+- Review audit logs.
+- Manage account access and permissions.
+
+### B. Teacher
+
+Teachers should have access to a dedicated dashboard.
+
+Required capabilities:
+
+- Secure login.
+- View assigned classes.
+- View registered pupils.
+- Create and manage practical exercises.
+- Assign lessons and activities.
+- Set assessment deadlines.
+- Monitor pupil progress.
+- Review pupil assessment results.
+- View individual performance.
+- View class performance reports.
+- Identify pupils who need additional support.
+
+### C. Pupil
+
+Pupils should have a simple, accessible learning interface.
+
+Required capabilities:
+
+- Secure login.
+- View their dashboard.
+- Browse ICT lessons.
+- Access computer history lessons.
+- Explore computer hardware.
+- Use the virtual desktop.
+- Complete practical exercises.
+- Take quizzes.
+- Complete assessments.
+- View scores and feedback.
+- Track personal learning progress.
+- Resume unfinished learning activities.
+
+A pupil must never access another pupil's private records.
+
+---
+
+## 6. Core learning modules
+
+Develop the following modules as functional sections of the application.
+
+### MODULE 1: Understanding ICT and Computer Evolution
+
+Create an interactive educational section covering:
+
+- Introduction to ICT.
+- Meaning and functions of computers.
+- Early calculating devices.
+- Abacus.
+- Mechanical calculating devices.
+- Charles Babbage and the Difference Engine.
+- Analytical Engine.
+- Development of electronic computers.
+- First generation of computers.
+- Second generation of computers.
+- Third generation of computers.
+- Fourth generation of computers.
+- Fifth generation and emerging computing technologies.
+
+For each computer generation, provide:
+
+- Historical overview.
+- Approximate period.
+- Main technology used.
+- Characteristics.
+- Examples.
+- Advantages.
+- Limitations.
+- Images or illustrations.
+- Comparison with other generations.
+- Interactive knowledge checks.
+- End-of-topic quizzes.
+
+Present the generations as a commonly used educational classification. Explain that their historical boundaries can overlap and that the fifth generation does not have universally agreed dates.
+
+### MODULE 2: Computer Hardware Laboratory
+
+Create an interactive virtual hardware laboratory.
+
+Pupils should be able to explore:
+
+- CPU.
+- Motherboard.
+- RAM.
+- ROM.
+- Hard disk drive.
+- Solid-state drive.
+- Power supply unit.
+- GPU.
+- Cooling system.
+- Keyboard.
+- Mouse.
+- Monitor.
+- Printer.
+- Scanner.
+- Storage devices.
+
+Required interactive features:
+
+- Display an illustrated computer system.
+- Allow pupils to click individual components.
+- Display component names and descriptions.
+- Explain component functions.
+- Show how components interact.
+- Include matching exercises.
+- Include drag-and-drop activities.
+- Include virtual computer assembly.
+- Include component identification quizzes.
+- Include basic hardware troubleshooting exercises.
+
+Provide useful educational illustrations rather than relying entirely on text.
+
+### MODULE 3: Computer Software
+
+Teach pupils about:
+
+- System software.
+- Application software.
+- Utility software.
+- Device drivers.
+- Programming software.
+- Operating systems.
+
+Include examples, comparisons, interactive exercises and quizzes.
+
+### MODULE 4: Operating Systems
+
+Teach:
+
+- Meaning of an operating system.
+- Functions of an operating system.
+- Types of operating systems.
+- User interfaces.
+- File management.
+- Memory management.
+- Process management.
+- Device management.
+- Basic system configuration.
+
+Include an interactive operating-system learning environment.
+
+### MODULE 5: VIRTUAL COMPUTER DESKTOP
+
+This is one of the most important features of VIRTUOLAB.
+
+Develop a browser-based virtual desktop that gives pupils the experience of interacting with a computer.
+
+It should look and behave like a modern desktop environment while remaining an original educational simulation.
+
+Include:
+
+- Desktop background.
+- Desktop icons.
+- Start menu.
+- Taskbar.
+- Application launcher.
+- File manager.
+- Recycle bin.
+- Simulated system settings.
+- Application windows.
+- Window minimize, maximize and close controls.
+- Clock and date display.
+- Context menus.
+- Keyboard shortcuts.
+- Desktop notifications.
+
+The virtual desktop must be interactive, not merely an image.
+
+Pupils should be able to:
+
+1. Open applications.
+2. Close applications.
+3. Move application windows.
+4. Minimize and maximize windows.
+5. Create folders.
+6. Rename folders.
+7. Delete folders.
+8. Create files.
+9. Rename files.
+10. Move files.
+11. Copy files.
+12. Paste files.
+13. Delete files.
+14. Restore deleted files from the simulated recycle bin.
+15. Organize files into folders.
+16. Search for files.
+17. Open simulated applications.
+18. Change selected desktop settings.
+
+All operations should work inside the browser simulation.
+
+Persist appropriate virtual desktop data so pupils can continue their exercises without losing their progress.
+
+Do not execute arbitrary operating-system commands or allow the simulator to access a pupil's real files without explicit permission.
+
+### MODULE 6: WORD PROCESSING SIMULATOR
+
+Develop an interactive word-processing application inside the virtual desktop.
+
+Include:
+
+- Document creation.
+- Text input.
+- Font selection.
+- Font size.
+- Bold.
+- Italic.
+- Underline.
+- Text alignment.
+- Text colour.
+- Highlighting.
+- Paragraph formatting.
+- Bullets and numbering.
+- Undo and redo.
+- Save and open simulated documents.
+- Basic page formatting.
+
+Provide practical exercises such as:
+
+"Create a document titled My First ICT Assignment. Type a short paragraph, make the heading bold, underline an important sentence and save the document in the Assignments folder."
+
+### MODULE 7: SPREADSHEET SIMULATOR
+
+Create an interactive spreadsheet environment.
+
+Include:
+
+- Rows and columns.
+- Cells.
+- Cell selection.
+- Data entry.
+- Basic formulas.
+- SUM.
+- AVERAGE.
+- MIN.
+- MAX.
+- Basic arithmetic.
+- Cell formatting.
+- Simple charts.
+- Saving simulated spreadsheet files.
+
+Example exercise:
+
+"Create a spreadsheet containing five pupils and their marks. Calculate the total and average marks."
+
+### MODULE 8: PRESENTATION SIMULATOR
+
+Include:
+
+- Creating slides.
+- Adding titles.
+- Adding text.
+- Changing layouts.
+- Changing backgrounds.
+- Rearranging slides.
+- Slide previews.
+- Presentation mode.
+- Saving simulated presentations.
+
+### MODULE 9: INTERNET AND NETWORKING
+
+Teach:
+
+- Meaning of the internet.
+- Web browsers.
+- Search engines.
+- Websites.
+- URLs.
+- Basic networking concepts.
+- LAN and WAN.
+- Routers.
+- Switches.
+- Network connections.
+- Internet safety.
+- Responsible internet usage.
+
+Provide an educational browser simulation with fictional educational websites and safe browsing exercises.
+
+Do not create a fake browser that claims to provide real internet access.
+
+### MODULE 10: CYBERSECURITY AND DIGITAL SAFETY
+
+Cover:
+
+- Password security.
+- Phishing.
+- Malware.
+- Computer viruses.
+- Safe downloads.
+- Online privacy.
+- Personal information protection.
+- Cyberbullying awareness.
+- Responsible digital behaviour.
+
+Include scenario-based questions and practical safety exercises.
+
+### MODULE 11: PRACTICAL ASSESSMENT CENTRE
+
+Develop a practical assessment engine.
+
+It must support three learning levels:
+
+**Level 1 — Guided Learning**
+
+- Provide step-by-step instructions.
+- Show hints.
+- Demonstrate required actions.
+- Explain mistakes.
+
+**Level 2 — Independent Practice**
+
+- Present a practical task.
+- Allow pupils to complete it independently.
+- Provide feedback after submission.
+
+**Level 3 — Practical Assessment**
+
+- Present an assessment without step-by-step assistance.
+- Record relevant learner actions.
+- Evaluate task completion.
+- Calculate scores.
+- Provide feedback.
+
+Example assessment:
+
+"Create a folder named ICT Practical. Inside it, create another folder called Assignments. Create a document and save it inside the Assignments folder."
+
+The assessment engine should check:
+
+- Whether the main folder exists.
+- Whether the subfolder exists in the correct location.
+- Whether the document exists.
+- Whether the document is stored in the correct folder.
+
+Develop a reusable scoring system rather than hardcoding the assessment logic separately for every exercise.
+
+Include:
+
+- Assessment instructions.
+- Total marks.
+- Awarded marks.
+- Completion status.
+- Feedback.
+- Attempt history.
+- Assessment dates.
+- Performance reports.
+
+---
+
+## 7. Simulation engine requirements
+
+Build a reusable simulation engine that powers the virtual desktop and practical exercises.
+
+The engine should:
+
+- Maintain the state of the simulated computer.
+- Track files and folders.
+- Manage open applications.
+- Manage desktop windows.
+- Record learner actions.
+- Validate practical tasks.
+- Calculate assessment scores.
+- Provide hints and feedback.
+- Save learner progress.
+- Support different exercise types.
+
+Keep the simulation logic separate from the React interface.
+
+Do not implement the virtual desktop as a collection of disconnected buttons that only change their appearance.
+
+Every major interactive control must perform a meaningful operation.
+
+---
+
+## 8. Dashboard requirements
+
+### Pupil dashboard
+
+Create an attractive dashboard containing:
+
+- Welcome message.
+- Learning progress.
+- Completed modules.
+- Current lessons.
+- Assigned exercises.
+- Assessment scores.
+- Recent activities.
+- Achievement indicators.
+- Recommended next lessons.
+
+### Teacher dashboard
+
+Include:
+
+- Number of assigned classes.
+- Total pupils.
+- Active assignments.
+- Completed assignments.
+- Average class performance.
+- Pupils requiring attention.
+- Recent assessment activities.
+- Performance reports.
+
+### Administrator dashboard
+
+Include:
+
+- Total schools.
+- Total teachers.
+- Total pupils.
+- Total classes.
+- Total learning modules.
+- Total assessments.
+- Platform activity.
+- User management.
+- System management.
+
+Dashboard figures must come from actual database records and must not be hardcoded demonstration numbers.
+
+---
+
+## 9. UI/UX design requirements
+
+The platform must have a modern, professional educational technology design.
+
+Use a consistent visual identity.
+
+Suggested design direction:
+
+- Primary colour: deep navy blue.
+- Secondary colour: blue.
+- Accent colour: teal or cyan.
+- Background: light neutral grey.
+- Cards: white.
+- Typography: clean and readable.
+- Rounded corners used consistently.
+- Subtle shadows.
+- Clear icons.
+- Consistent spacing.
+
+### Interface requirements
+
+- Responsive on desktop, tablets and smartphones.
+- Mobile-first design.
+- Accessible navigation.
+- Clear dashboards.
+- Proper loading indicators.
+- Useful empty states.
+- Error messages.
+- Confirmation messages.
+- Form validation.
+- Search and filtering where appropriate.
+- Accessible colour contrast.
+- Consistent navigation.
+- Light and dark themes if practical.
+
+Do not make the application look like a generic admin template.
+
+The virtual desktop should have its own visual design, distinct from the main VIRTUOLAB dashboard.
+
+Avoid excessive animations, unnecessary visual effects and cluttered layouts.
+
+---
+
+## 10. Database design
+
+Design a proper relational database.
+
+Include suitable entities for:
+
+- Schools.
+- Users.
+- Roles.
+- Classes.
+- Class memberships.
+- Teacher assignments.
+- Learning modules.
+- Lessons.
+- Learning resources.
+- Practical exercises.
+- Assessment questions.
+- Assessment criteria.
+- Pupil attempts.
+- Assessment results.
+- Learning progress.
+- Virtual desktop states.
+- Simulated files.
+- Simulated folders.
+- Achievements.
+- Notifications.
+- Audit logs.
+
+Define appropriate:
+
+- Primary keys.
+- Foreign keys.
+- Relationships.
+- Unique constraints.
+- Indexes.
+- Data validation.
+
+Ensure that users and records are correctly associated with their respective schools.
+
+Use database migrations and seed data.
+
+Do not store passwords as plain text.
+
+---
+
+## 11. Offline and low-connectivity support
+
+VIRTUOLAB is intended for schools that may experience unreliable internet access.
+
+Therefore, consider:
+
+- Progressive Web App (PWA) support.
+- Service worker caching.
+- Offline access to selected lessons.
+- IndexedDB for suitable local learning data.
+- Synchronisation when internet connectivity returns.
+- Clear online/offline indicators.
+
+Design an additional local-network deployment option.
+
+A school should eventually be able to host VIRTUOLAB on a local computer or server and allow pupils to connect through the school's Wi-Fi without depending on external internet access.
+
+Explain the difference between:
+
+1. Offline access on an individual device.
+2. Access through a school-hosted local server.
+3. Cloud-hosted online access.
+
+Do not claim that a website can provide interactive learning without any device capable of running it. Design the platform to support shared computers and smartphones where individual computers are unavailable.
+
+---
+
+## 12. Security, privacy and reliability
+
+The system may be used by school pupils, including minors.
+
+Implement:
+
+- Secure password storage.
+- Role-based permissions.
+- School-level data isolation.
+- Protected routes.
+- Server-side input validation.
+- Secure session handling.
+- Rate limiting for authentication endpoints.
+- Appropriate security headers.
+- Safe error handling.
+- Audit logging for privileged actions.
+- Database backup functionality.
+- Protection against unauthorized access.
+- No exposure of sensitive information in frontend code.
+- No hardcoded production secrets.
+
+Never expose pupil information to unauthorized teachers, pupils or schools.
+
+---
+
+## 13. Project folder structure
+
+Create a maintainable structure similar to the following:
+
+VIRTUOLAB/
+ 
+- client/
+  - src/
+    - assets/
+    - components/
+    - layouts/
+    - pages/
+    - features/
+    - modules/
+    - simulations/
+    - dashboards/
+    - hooks/
+    - services/
+    - contexts/
+    - types/
+    - utils/
+    - styles/
+  - public/
+
+- server/
+  - src/
+    - config/
+    - controllers/
+    - middleware/
+    - routes/
+    - services/
+    - repositories/
+    - validators/
+    - simulation/
+    - assessments/
+    - utils/
+  - prisma/
+    - schema.prisma/
+    - seed.ts/
+
+- scripts/
+  - setup.ps1
+  - create-project.ps1
+  - install-dependencies.ps1
+  - configure-database.ps1
+  - seed-database.ps1
+  - start-development.ps1
+  - stop-development.ps1
+  - run-tests.ps1
+  - build-production.ps1
+  - backup-database.ps1
+  - reset-database.ps1
+
+- tests/
+- documentation/
+- .env.example
+- .gitignore
+- README.md
+
+You may improve this structure where necessary, but maintain separation of frontend, backend, database, simulations, assessments and automation scripts.
+
+---
+
+## 14. Functional testing and acceptance criteria
+
+Do not consider the project complete until the following workflows have been implemented and tested.
+
+### Authentication
+
+- Administrator can log in.
+- Teacher can log in.
+- Pupil can log in.
+- Invalid credentials are rejected.
+- Unauthorized users cannot access protected pages.
+- Users can log out.
+
+### Administration
+
+- Administrator can register a school.
+- Administrator can create teacher accounts.
+- Administrator can create pupil accounts.
+- Administrator can create classes.
+- Administrator can assign teachers to classes.
+- Administrator can view platform records.
+
+### Learning
+
+- Pupil can access lessons.
+- Pupil can navigate between modules.
+- Pupil can complete quizzes.
+- Pupil can see results.
+- Pupil can track progress.
+
+### Hardware laboratory
+
+- Pupil can select hardware components.
+- Component information is displayed.
+- Matching exercises work.
+- Assembly exercises validate answers.
+
+### Virtual desktop
+
+- Desktop loads correctly.
+- Applications open.
+- Windows can be moved and closed.
+- Folders can be created.
+- Files can be created.
+- Files can be renamed.
+- Files can be copied and moved.
+- Files can be deleted and restored.
+- File operations persist appropriately.
+- Practical tasks can validate simulated actions.
+
+### Office simulations
+
+- Word-processing features work.
+- Spreadsheet calculations work.
+- Presentation creation works.
+- Simulated files can be saved and reopened.
+
+### Assessments
+
+- Exercises can be assigned.
+- Pupils can submit attempts.
+- Assessment criteria are evaluated.
+- Scores are calculated.
+- Results are stored.
+- Teachers can view pupil results.
+
+### Offline support
+
+- Selected cached lessons remain available offline.
+- The interface indicates connectivity status.
+- Offline changes are handled without silently losing data.
+
+### Build and deployment
+
+- Frontend builds successfully.
+- Backend builds successfully.
+- Database migrations succeed.
+- Automated tests pass.
+- Application starts using the provided PowerShell scripts.
+
+Do not mark an acceptance criterion as complete unless it has actually been implemented and verified.
+
+---
+
+## 15. Development methodology
+
+Work in controlled development phases.
+
+### PHASE 1 — Environment and project foundation
+
+- Check Node.js and npm installations.
+- Check PowerShell version.
+- Create the project directory.
+- Generate the folder structure.
+- Configure frontend and backend.
+- Install dependencies.
+- Configure database.
+- Verify the initial application starts.
+
+### PHASE 2 — Authentication and user management
+
+- Implement authentication.
+- Implement roles.
+- Implement protected routes.
+- Implement school management.
+- Implement classes and memberships.
+- Test access control.
+
+### PHASE 3 — Learning content
+
+- Implement ICT history.
+- Implement computer generations.
+- Implement hardware lessons.
+- Implement software lessons.
+- Implement operating-system lessons.
+- Implement quizzes.
+
+### PHASE 4 — Virtual computer simulation
+
+- Implement virtual desktop.
+- Implement window management.
+- Implement file manager.
+- Implement folder operations.
+- Implement simulated applications.
+- Implement persistent simulation state.
+
+### PHASE 5 — Practical learning applications
+
+- Implement word processor.
+- Implement spreadsheet.
+- Implement presentation simulator.
+- Implement internet and networking lessons.
+- Implement cybersecurity exercises.
+
+### PHASE 6 — Assessment and reporting
+
+- Implement practical assessment engine.
+- Implement reusable assessment criteria.
+- Implement scoring.
+- Implement pupil progress.
+- Implement teacher reports.
+
+### PHASE 7 — Offline capabilities and optimization
+
+- Implement PWA.
+- Implement selected offline lessons.
+- Implement local data storage.
+- Implement synchronization where supported.
+- Optimize performance and mobile usability.
+
+### PHASE 8 — Testing and final delivery
+
+- Run all tests.
+- Fix identified bugs.
+- Run production builds.
+- Verify all critical workflows.
+- Prepare documentation.
+- Prepare database backup instructions.
+- Prepare deployment instructions.
+
+Do not skip phases.
+
+---
+
+## 16. Development interaction rules
+
+You must follow these instructions throughout development.
+
+1. Begin by checking the available development environment.
+2. Do not assume Node.js, npm or other dependencies are installed.
+3. Do not assume an existing project folder.
+4. Create VIRTUOLAB as an independent project.
+5. Use PowerShell scripts to generate and manage the project.
+6. Write complete source files rather than leaving unexplained placeholders.
+7. Avoid fake functionality.
+8. Avoid hardcoded dashboard statistics.
+9. Avoid buttons that do nothing.
+10. Avoid disconnected pages.
+11. Connect the frontend to real backend endpoints.
+12. Connect the backend to the database.
+13. Implement validation on both frontend and backend.
+14. Test every major feature.
+15. Fix errors before moving to the next phase.
+16. Maintain consistent coding standards.
+17. Document important technical decisions.
+18. Keep the project manageable and modular.
+19. Do not introduce unnecessary technologies.
+20. Do not claim that a feature works without testing it.
+
+### How to provide development instructions
+
+When beginning implementation:
+
+- Give me the exact PowerShell command to execute.
+- Tell me the directory in which to execute it.
+- Explain briefly what the script does.
+- Provide the complete PowerShell script or complete source-file creation script.
+- Tell me what successful output should look like.
+- Tell me how to verify the result.
+- Wait for my execution result before proceeding when the next step depends on it.
+
+If an error occurs, diagnose it and provide a correction. Do not ignore the error and continue building on a broken foundation.
+
+For large batches of source files, organize them into logical PowerShell scripts rather than sending an unmanageable block of code.
+
+---
+
+## 17. Final deliverables
+
+The completed project must contain:
+
+1. Complete frontend source code.
+2. Complete backend source code.
+3. Database schema.
+4. Database migration files.
+5. Database seed scripts.
+6. PowerShell automation scripts.
+7. Functional authentication.
+8. Administrator dashboard.
+9. Teacher dashboard.
+10. Pupil dashboard.
+11. ICT learning modules.
+12. Interactive hardware laboratory.
+13. Functional virtual desktop.
+14. Word-processing simulator.
+15. Spreadsheet simulator.
+16. Presentation simulator.
+17. Practical assessment engine.
+18. Progress tracking.
+19. Responsive user interface.
+20. Offline support for selected content.
+21. Automated tests.
+22. README documentation.
+23. Installation guide.
+24. User guide.
+25. Local deployment guide.
+26. Database backup and restoration instructions.
+
+Include demonstration accounts for the administrator, teacher and pupil roles in development mode only. Document their credentials and require secure credentials for production deployment.
+
+---
+
+## 18. First task — Start the project
+
+Do not start by generating random application pages.
+
+Your first response must:
+
+1. Confirm the proposed architecture.
+2. Explain the project structure.
+3. Identify the required software and dependencies.
+4. Provide a short implementation roadmap.
+5. Begin PHASE 1 by checking the Windows development environment through PowerShell.
+6. Generate the initial PowerShell setup script.
+7. Verify that the project foundation is created successfully.
+
+Start with the environment inspection and project initialization.
+
+**The ultimate objective is to deliver a complete, maintainable and genuinely functional VIRTUOLAB system that can be run locally on Windows, demonstrated to academic supervisors and progressively deployed in schools with limited ICT infrastructure in Zambia.**
+
+Build the actual system, not just a representation of what the system could look like.

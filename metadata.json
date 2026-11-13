@@ -1,0 +1,6 @@
+{
+  "name": "VIRTUOLAB",
+  "description": "Virtual ICT Learning and Computer Simulation System for Zambian schools with limited ICT infrastructure.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
